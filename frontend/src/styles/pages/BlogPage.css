@@ -1,0 +1,8 @@
+body{
+    background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+    background-size: 14px 14px;
+}
+
+h1{
+    color: #212121;
+}
