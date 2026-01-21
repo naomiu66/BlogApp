@@ -42,6 +42,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 0.8em;
+  justify-content: space-between;
 }
 
 .comic-card:hover .card-avatar {
@@ -125,6 +126,23 @@ span{
   padding-top: 0.5em;
 }
 
+.card-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ddd;
+
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4; 
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
 .action-button {
   background-color: var(--primary-yellow);
   border: var(--border-stroke) solid var(--ink-black);
@@ -165,3 +183,9 @@ span{
 .like-button:hover .action-button-icon {
   fill: var(--paper-white);
 }
+
+.buttons-container {
+  display: flex;
+  justify-content: space-around;
+}
+

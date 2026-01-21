@@ -4,7 +4,7 @@ const blogSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        maxLength: 18,
+        maxLength: 20,
     },
 
     content: {
@@ -15,7 +15,7 @@ const blogSchema = new mongoose.Schema({
     author: {
         type: String,
         default: "Anonymous",
-        maxLength: 18,
+        maxLength: 20,
     },
 
     createdAt: {

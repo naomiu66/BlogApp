@@ -3,37 +3,51 @@ import type { CreateOrUpdateBlog } from "../types/api/CreateOrUpdateBlogRequest"
 import { API_BASE_URL, apiCall } from "./http";
 
 export const blogsApi = {
-    async createBlog(blogData: CreateOrUpdateBlog) {
-        return await apiCall(`${API_BASE_URL}/blogs`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(blogData)
-        })
-    },
+  async createBlog(
+    blogData: CreateOrUpdateBlog,
+  ): Promise<BlogApiResponse | null> {
+    const body: Record<string, unknown> = {
+      title: blogData.title,
+      content: blogData.content,
+    };
 
-    async getAllBlogs() : Promise<BlogApiResponse[]> {
-        return await apiCall(`${API_BASE_URL}/blogs`);
-    },
+    if (blogData.author?.trim()) {
+      body.author = blogData.author;
+    }
 
-    async getBlogById(blogId: string) : Promise<BlogApiResponse | null> {
-        return await apiCall(`${API_BASE_URL}/blogs/${blogId}`);
-    },
+    return await apiCall(`${API_BASE_URL}/blogs`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+  },
 
-    async updateBlog(blogId: string, blogData: CreateOrUpdateBlog) {
-        return await apiCall(`${API_BASE_URL}/blogs/${blogId}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(blogData)
-        });
-    },
+  async getAllBlogs(): Promise<BlogApiResponse[]> {
+    return await apiCall(`${API_BASE_URL}/blogs`);
+  },
 
-    async deleteBlog(blogId: string) {
-        return await apiCall(`${API_BASE_URL}/blogs/${blogId}`, {
-            method: "DELETE"
-        });
-    },
-}
+  async getBlogById(blogId: string): Promise<BlogApiResponse | null> {
+    return await apiCall(`${API_BASE_URL}/blogs/${blogId}`);
+  },
+
+  async updateBlog(
+    blogId: string,
+    blogData: CreateOrUpdateBlog,
+  ): Promise<BlogApiResponse | null> {
+    return await apiCall(`${API_BASE_URL}/blogs/${blogId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(blogData),
+    });
+  },
+
+  async deleteBlog(blogId: string): Promise<BlogApiResponse | null> {
+    return await apiCall(`${API_BASE_URL}/blogs/${blogId}`, {
+      method: "DELETE",
+    });
+  },
+};

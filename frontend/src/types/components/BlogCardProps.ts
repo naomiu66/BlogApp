@@ -4,4 +4,7 @@ export type BlogCardProps = {
     author: string;
     createdAt: string;
     updatedAt: string;
+
+    onEdit: () => void;
+    onDelete: () => void;
 }

@@ -7,6 +7,9 @@ const BlogCard = ({
   author,
   createdAt,
   updatedAt,
+
+  onEdit,
+  onDelete,
 }: BlogCardProps) => {
   return (
     <>
@@ -24,11 +27,19 @@ const BlogCard = ({
               </p>
               <p className="card-handle">{author}</p>
             </div>
+            <div className="buttons-container">
+              <button onClick={onEdit} className="action-button">
+                Edit
+              </button>
+              <button onClick={onDelete} className="action-button">
+                Delete
+              </button>
+            </div>
           </div>
 
           <div className="card-content">
             <div className="card-image-container">
-              <p>{content}</p>
+              <p className="card-text">{content}</p>
             </div>
             <p className="card-caption">
               Created At: {createdAt}
