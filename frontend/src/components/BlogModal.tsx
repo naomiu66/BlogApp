@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, type FC } from "react";
 import "../styles/components/Modal.css";
-import "../styles/components/BlogModal.css"; 
+import "../styles/components/BlogModal.css";
 import type { BlogModalProps } from "../types/components/ModalProps";
 
 export const BlogModal: FC<BlogModalProps> = ({
@@ -54,7 +54,7 @@ export const BlogModal: FC<BlogModalProps> = ({
               maxLength={20}
               onChange={(e) => setTitle(e.target.value)}
             />
-            
+
             <input
               className="modal-input"
               type="text"
@@ -72,7 +72,15 @@ export const BlogModal: FC<BlogModalProps> = ({
             />
 
             <div className="card-actions">
-              <button className="action-button" onClick={handleSubmit}>
+              <button
+                className="action-button"
+                onClick={() => {
+                  handleSubmit();
+                  setTitle("");
+                  setContent("");
+                  setAuthor("");
+                }}
+              >
                 {mode === "create" ? "Create" : "Update"}
               </button>
               <button
